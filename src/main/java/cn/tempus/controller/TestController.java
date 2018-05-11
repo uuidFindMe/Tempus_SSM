@@ -4,6 +4,7 @@ import cn.tempus.bean.Student;
 import cn.tempus.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,11 +19,11 @@ public class TestController {
     private IStudentService studentService;
 
     @RequestMapping("/stuTest")
-    @ResponseBody
-    public String test(){
+    public String test(Model model){
         System.out.println("find stu .......");
         Student student = studentService.findStu();
+        model.addAttribute("name", "leonardoEzio");
         System.out.println(student);
-        return "successful";
+        return "student";
     }
 }
